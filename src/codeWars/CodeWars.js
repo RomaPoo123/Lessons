@@ -118,12 +118,86 @@ function blowCandles(str) {
 // Убедитесь, что ваша функция не возвращает ложное срабатывание, проверяя только день.
 
 function isToday(date) {
-    const now = new Date();
-    now.setHours(0, 0, 0, 0)
-    console.log(now.toDateString())
-    // return date.getFullYear() === now.getFullYear() &&
-    //     date.getMonth() === now.getMonth() &&
-    //     date.getDate() === now.getDate();
+    const now = new Date(); // создаем переменную, в которой храниться текущая дата
+    now.setHours(0, 0, 0, 0) // задаем этой переменной нулевое время
+    return date.getFullYear() === now.getFullYear() &&
+        date.getMonth() === now.getMonth() &&
+        date.getDate() === now.getDate(); // сравниваем год, месяц и дату переданного обьекта с нашим, при всех трех true вернется true иначе false
 }
 
-isToday(1)
+// Task №6
+// Arguments to Binary addition
+// Дан массив, сложите все числовые элементы и верните двоичный эквивалент этой суммы; чтобы сделать код безопасным, все, что не является числом, следует добавлять как 0, поскольку его нельзя сложить.
+
+function arr2bin(arr) {
+    let sum = 0;
+    let newArr = arr.filter(t => typeof (t) === "number")
+    newArr.map(t => sum += t);
+    return sum.toString(2);
+}
+
+// arr2bin([1, 2, 'a'])
+
+// Task №7
+// Parse nice int from char problem
+// Напишите программу, которая возвращает возраст девочки (0–9) в виде целого числа.
+
+function getAge(inputString) {
+    let num = Math.floor(Math.random() * 10) // создание рандомного числа от 0 до 9
+    //     return (`${num} years old`); //  возврат этого числа
+    return (Number(inputString[0]))// return не тот, так как должен выводить случайное число от 0 до 9 num
+}
+
+// Task №8
+// 
+// 
+
+function DNAtoRNA(dna) {
+    return dna.split('').filter(t => t === "G" || t === "C" || t === "A" || t === "T").map(t => t === "T" ? t = "U" : t).join('')
+}
+
+// console.log(DNAtoRNA("GCTATRTGA"))
+
+// Task №9
+// Сколько из них меньше меня?
+// Напишите функцию, которая для заданного массива arrвозвращает массив, содержащий в каждом индексе iколичество чисел, которые меньше, чем arr[i]справа.
+
+
+function smaller(nums) {
+    let arr = [...nums]; // создаем копию массива
+    let result = []; // обьявляем переменную с пустым массивом для результата 
+    for (let i = 0; i < nums.length; i++) { // циклом проходимся по массиву
+        arr.shift() // в новом массиве удаляем первый элемент, который мы сравниваем со значениями справа
+        let newArr = arr.filter(t => t < nums[i]) // в переменнную фильтруем нашу копию массива, в которой будут значения меньше чем наше 
+        result.push(newArr.length) // в массив результатат добавляем в конец элемент, который является длинной массива
+    }
+    return result // возвращаем результат
+}
+
+
+// console.log(smaller([5, 4, 3, 2, 1]))
+// console.log(smaller([1, 2, 1]))
+
+
+// Task №10
+// английские нищие
+// Это неправильное толкование этого ката , ваша задача здесь довольно проста: учитывая массив значений и количество нищих, вы должны вернуть массив с суммой того, что каждый нищий приносит домой, предполагая, что все они ходят по очереди, от первого до последнего.
+
+
+function beggars(values, n) {
+    let result = new Array(n).fill(0);
+    // Проходим по каждому значению в массиве
+    for (let i = 0; i < values.length; i++) {
+        // Распределяем значения по нищим по очереди
+        result[i % n] += values[i];
+    }
+
+    return result;
+}
+
+
+// console.log([1, 2, 3, 4, 5], 0)
+// console.log([1, 2, 3, 4, 5], 3)
+// console.log([1, 2, 3, 4, 5], 5)
+
+
