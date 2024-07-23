@@ -351,4 +351,30 @@ function combat(health, damage) {
     return (health - damage) > 0 ? health - damage : 0
 }
 
-console.log("привет".toUpperCase)
+// console.log("привет".toUpperCase)
+
+// Task №18
+// Блок чувак
+// Пусть 1представляют собой коробки, а 0представляют собой фон. Напишите функцию, которая возвращает, Trueможет ли блок-чувак перемещаться с левой стороны экрана на правую, учитывая его ограничения и Falseв противном случае.
+
+
+function canTraverse(matrix) {
+
+
+    console.log(matrix)
+}
+
+console.log(canTraverse([
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 1, 1, 1, 0, 1, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 0]
+]))
+
+
+
+
+
+
+
+
