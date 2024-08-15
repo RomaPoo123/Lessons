@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { MicroTasks } from './microtasks/MicroTasks';
-import { OnnOff } from './06-useState/06';
+import { UncontrolledOnnOff } from './06-useState/06UncontrolledOnOff';
+import { OnnOff } from './06-useState/06OnOff';
 import { User } from './07-callBack/07';
 import { ManComponent } from './08-destructuring-assignment/Destructuring';
 
@@ -30,14 +31,18 @@ function App() {
       }
     }
   }
+  let [switchOn, setswitchOn] = useState<boolean>(false)
+
   return (
     <div className="App">
       {/* <MicroTasks /> */}
-      {/* <OnnOff /> */}
+      <UncontrolledOnnOff />
+      <OnnOff value={switchOn} onChange={(value) => { setswitchOn(value) }} />
       {/* <User /> */}
-      <ManComponent title={"new User"} man={man} food={
+      {/* <ManComponent title={"new User"} man={man} food={
         ["milk", "banana"]} car={{ model: "BMW" }}
-      />
+      /> */}
+
     </div>
   );
 }
