@@ -14,6 +14,7 @@ export default meta;
 const onChangeHandler = action("onChange")
 
 type Story = StoryObj<typeof OnnOff>
+
 export const FirstStory: Story = {
     args: {
         value: false,
@@ -21,9 +22,7 @@ export const FirstStory: Story = {
     }
 }
 
-
-
-export const OnUncontrolledOnnOff = () => {
+export const OnModeUncontrolledOnnOff = () => {
     let [value, setValue] = useState<boolean>(true)
 
     const onStyle = {
@@ -62,7 +61,7 @@ export const OnUncontrolledOnnOff = () => {
         </div>
     )
 }
-export const OffUncontrolledOnnOff = () => {
+export const OffModeUncontrolledOnnOff = () => {
     let [value, setValue] = useState<boolean>(false)
 
     const onStyle = {
@@ -138,5 +137,16 @@ export const WarkingUncontrolledOnnOff = () => {
             <button onClick={() => setValue(false)} style={offStyle}>Off</button>
             <div style={indicatorStyle}></div>
         </div>
+    )
+}
+
+const callback = action("on or offclicked")
+
+export const OnMode = () => <OnnOff value={true} onChange={callback} />
+export const OffMode = () => <OnnOff value={false} onChange={callback} />
+export const ModeChanging = () => {
+    let [value, setValue] = useState<boolean>(true)
+    return (
+        < OnnOff value={value} onChange={setValue} />
     )
 }
